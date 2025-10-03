@@ -4,6 +4,7 @@ import peliculasRoutes from './peliculas.routes.js';
 import reviewsRoutes from './reviews.routes.js';
 import generosRoutes from './generos.routes.js';
 import seguimientosRoutes from './seguimientos.routes.js';
+import homeRoutes from './home.routes.js';
 
 const router = Router();
 
@@ -73,6 +74,7 @@ router.use('/peliculas', peliculasRoutes);
 router.use('/reviews', reviewsRoutes);
 router.use('/generos', generosRoutes);
 router.use('/seguimientos', seguimientosRoutes);
+router.use('/', homeRoutes);
 
 // Middleware para manejar rutas no encontradas
 router.use((req, res) => {
