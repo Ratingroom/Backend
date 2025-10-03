@@ -70,7 +70,7 @@ export const getGeneroById = async (req, res) => {
             include: [{
                 model: Pelicula,
                 as: 'peliculas',
-                attributes: ['id', 'titulo', 'imagen', 'fecha_lanzamiento'],
+                attributes: ['id', 'titulo', 'portada', 'fechaSalida'],
                 through: { attributes: [] },
                 order: [['titulo', 'ASC']]
             }]
@@ -299,7 +299,7 @@ export const getGeneroPeliculas = async (req, res) => {
                 attributes: [],
                 through: { attributes: [] }
             }],
-            attributes: ['id', 'titulo', 'imagen', 'fecha_lanzamiento', 'descripcion'],
+            attributes: ['id', 'titulo', 'portada', 'fechaSalida', 'descripcion'],
             limit: parseInt(limit),
             offset: parseInt(offset),
             order: [['titulo', 'ASC']]

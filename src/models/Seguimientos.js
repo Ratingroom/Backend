@@ -2,12 +2,6 @@ import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
 export const Seguimientos = sequelize.define('Seguimientos', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
-    },
     // Claves foráneas
     seguidor_id: {
         type: DataTypes.INTEGER,

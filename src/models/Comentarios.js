@@ -2,23 +2,12 @@ import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
 export const Comentarios = sequelize.define('Comentarios', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
-    },
     texto: {
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
             len: [1, 1000] // Límite razonable para comentarios
         }
-    },
-    creadoEn: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW
     },
     // Claves foráneas
     usuario_id: {
@@ -48,7 +37,7 @@ export const Comentarios = sequelize.define('Comentarios', {
     }
 }, {
     tableName: 'comentarios',
-    timestamps: false, // Usamos nuestro propio campo creadoEn
+    timestamps: true, // Usar timestamps automáticos de Sequelize
     indexes: [
         {
             fields: ['review_id'] // Índice para buscar comentarios por review

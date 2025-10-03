@@ -2,12 +2,6 @@ import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
 export const Genero = sequelize.define('Genero', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
-    },
     nombre: {
         type: DataTypes.STRING,
         allowNull: false,

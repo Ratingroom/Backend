@@ -22,12 +22,12 @@ export const getAllReviews = async (req, res) => {
                 {
                     model: Usuario,
                     as: 'usuario',
-                    attributes: ['id', 'usuario', 'fotoPerfil']
+                    attributes: ['id', 'username', 'fotoPerfil']
                 },
                 {
                     model: Pelicula,
                     as: 'pelicula',
-                    attributes: ['id', 'titulo', 'imagen']
+                    attributes: ['id', 'titulo', 'portada']
                 },
                 {
                     model: Comentarios,
@@ -82,12 +82,12 @@ export const getReviewById = async (req, res) => {
                 {
                     model: Usuario,
                     as: 'usuario',
-                    attributes: ['id', 'usuario', 'fotoPerfil']
+                    attributes: ['id', 'username', 'fotoPerfil']
                 },
                 {
                     model: Pelicula,
                     as: 'pelicula',
-                    attributes: ['id', 'titulo', 'imagen', 'descripcion']
+                    attributes: ['id', 'titulo', 'portada', 'descripcion']
                 },
                 {
                     model: Comentarios,
@@ -96,7 +96,7 @@ export const getReviewById = async (req, res) => {
                     include: [{
                         model: Usuario,
                         as: 'usuario',
-                        attributes: ['id', 'usuario', 'fotoPerfil']
+                        attributes: ['id', 'username', 'fotoPerfil']
                     }],
                     order: [['createdAt', 'ASC']]
                 }
@@ -188,12 +188,12 @@ export const createReview = async (req, res) => {
                 {
                     model: Usuario,
                     as: 'usuario',
-                    attributes: ['id', 'usuario', 'fotoPerfil']
+                    attributes: ['id', 'username', 'fotoPerfil']
                 },
                 {
                     model: Pelicula,
                     as: 'pelicula',
-                    attributes: ['id', 'titulo', 'imagen']
+                    attributes: ['id', 'titulo', 'portada']
                 }
             ]
         });
@@ -260,12 +260,12 @@ export const updateReview = async (req, res) => {
                 {
                     model: Usuario,
                     as: 'usuario',
-                    attributes: ['id', 'usuario', 'fotoPerfil']
+                    attributes: ['id', 'username', 'fotoPerfil']
                 },
                 {
                     model: Pelicula,
                     as: 'pelicula',
-                    attributes: ['id', 'titulo', 'imagen']
+                    attributes: ['id', 'titulo', 'portada']
                 }
             ]
         });
@@ -346,7 +346,7 @@ export const getReviewComentarios = async (req, res) => {
             include: [{
                 model: Usuario,
                 as: 'usuario',
-                attributes: ['id', 'usuario', 'fotoPerfil']
+                attributes: ['id', 'username', 'fotoPerfil']
             }],
             limit: parseInt(limit),
             offset: parseInt(offset),

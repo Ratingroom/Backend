@@ -67,12 +67,12 @@ export const seguirUsuario = async (req, res) => {
                 {
                     model: Usuario,
                     as: 'seguidor',
-                    attributes: ['id', 'username', 'foto_perfil']
+                    attributes: ['id', 'username', 'fotoPerfil']
                 },
                 {
                     model: Usuario,
                     as: 'seguido',
-                    attributes: ['id', 'username', 'foto_perfil']
+                    attributes: ['id', 'username', 'fotoPerfil']
                 }
             ]
         });
@@ -167,7 +167,7 @@ export const getSeguidores = async (req, res) => {
             include: [{
                 model: Usuario,
                 as: 'seguidor',
-                attributes: ['id', 'username', 'foto_perfil', 'createdAt']
+                attributes: ['id', 'username', 'fotoPerfil', 'createdAt']
             }],
             limit: parseInt(limit),
             offset: parseInt(offset),
@@ -180,7 +180,7 @@ export const getSeguidores = async (req, res) => {
                 usuario: {
                     id: usuario.id,
                     username: usuario.username,
-                    foto_perfil: usuario.foto_perfil
+                    fotoPerfil: usuario.fotoPerfil
                 },
                 seguidores: seguidores.rows.map(seg => ({
                     id: seg.id,
@@ -227,7 +227,7 @@ export const getSiguiendo = async (req, res) => {
             include: [{
                 model: Usuario,
                 as: 'seguido',
-                attributes: ['id', 'username', 'foto_perfil', 'createdAt']
+                attributes: ['id', 'username', 'fotoPerfil', 'createdAt']
             }],
             limit: parseInt(limit),
             offset: parseInt(offset),
@@ -240,7 +240,7 @@ export const getSiguiendo = async (req, res) => {
                 usuario: {
                     id: usuario.id,
                     username: usuario.username,
-                    foto_perfil: usuario.foto_perfil
+                    fotoPerfil: usuario.fotoPerfil
                 },
                 siguiendo: siguiendo.rows.map(seg => ({
                     id: seg.id,
@@ -339,7 +339,7 @@ export const getEstadisticasSeguimiento = async (req, res) => {
                 usuario: {
                     id: usuario.id,
                     username: usuario.username,
-                    foto_perfil: usuario.foto_perfil
+                    fotoPerfil: usuario.fotoPerfil
                 },
                 estadisticas: {
                     totalSeguidores,

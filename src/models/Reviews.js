@@ -2,18 +2,12 @@ import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
 export const Reviews = sequelize.define('Reviews', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
-    },
-    calificacion: {
+    rating: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
             min: 1,
-            max: 10 // Asumiendo una escala de 1-10
+            max: 5 // Escala de 1-5 estrellas
         }
     },
     texto: {
@@ -22,16 +16,6 @@ export const Reviews = sequelize.define('Reviews', {
         validate: {
             len: [1, 2000] // Límite razonable para reviews
         }
-    },
-    creadoEn: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW
-    },
-    actualizadoEn: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW
     },
     // Claves foráneas
     usuario_id: {
@@ -52,7 +36,7 @@ export const Reviews = sequelize.define('Reviews', {
     }
 }, {
     tableName: 'reviews',
-    timestamps: false, // Usamos nuestros propios campos de fecha
+    timestamps: true, // Usar timestamps automáticos de Sequelize
     indexes: [
         {
             unique: true,

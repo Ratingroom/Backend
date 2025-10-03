@@ -7,7 +7,7 @@ import { Comentarios } from '../models/Comentarios.js';
 export const getAllUsuarios = async (req, res) => {
     try {
         const usuarios = await Usuario.findAll({
-            attributes: ['id', 'email', 'usuario', 'fotoPerfil', 'createdAt']
+            attributes: ['id', 'email', 'username', 'fotoPerfil', 'createdAt']
         });
         
         res.json({
@@ -31,7 +31,7 @@ export const getUsuarioById = async (req, res) => {
     try {
         const { id } = req.params;
         const usuario = await Usuario.findByPk(id, {
-            attributes: ['id', 'email', 'usuario', 'fotoPerfil', 'createdAt'],
+            attributes: ['id', 'email', 'username', 'fotoPerfil', 'createdAt'],
             include: [
                 {
                     model: Reviews,
@@ -76,13 +76,13 @@ export const getUsuarioById = async (req, res) => {
 // Crear un nuevo usuario
 export const createUsuario = async (req, res) => {
     try {
-        const { email, usuario, contrasena, fotoPerfil } = req.body;
+        const { email, username, contrasena, fotoPerfil } = req.body;
 
         // Validaciones básicas
-        if (!email || !usuario || !contrasena) {
+        if (!email || !username || !contrasena) {
             return res.status(400).json({
                 success: false,
-                message: 'Email, usuario y contrasena son requeridos'
+                message: 'Email, username y contrasena son requeridos'
             });
         }
 
@@ -97,7 +97,7 @@ export const createUsuario = async (req, res) => {
 
         const nuevoUsuario = await Usuario.create({
             email,
-            usuario,
+            username,
             contrasena,
             fotoPerfil: fotoPerfil || 'https://via.placeholder.com/150'
         });
@@ -137,7 +137,7 @@ export const createUsuario = async (req, res) => {
 export const updateUsuario = async (req, res) => {
     try {
         const { id } = req.params;
-        const { email, usuario, contrasena, fotoPerfil } = req.body;
+        const { email, username, contrasena, fotoPerfil } = req.body;
 
         const usuarioExistente = await Usuario.findByPk(id);
         if (!usuarioExistente) {
@@ -161,7 +161,7 @@ export const updateUsuario = async (req, res) => {
         // Actualizar campos
         const updateData = {};
         if (email) updateData.email = email;
-        if (usuario) updateData.usuario = usuario;
+        if (username) updateData.username = username;
         if (contrasena) updateData.contrasena = contrasena;
         if (fotoPerfil) updateData.fotoPerfil = fotoPerfil;
 
@@ -277,7 +277,7 @@ export const getUsuarioSeguidores = async (req, res) => {
             include: [{
                 model: Usuario,
                 as: 'seguidor',
-                attributes: ['id', 'usuario', 'fotoPerfil']
+                attributes: ['id', 'username', 'fotoPerfil']
             }]
         });
 
@@ -314,7 +314,7 @@ export const getUsuarioSiguiendo = async (req, res) => {
             include: [{
                 model: Usuario,
                 as: 'seguido',
-                attributes: ['id', 'usuario', 'fotoPerfil']
+                attributes: ['id', 'username', 'fotoPerfil']
             }]
         });
 

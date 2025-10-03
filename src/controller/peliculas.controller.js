@@ -99,7 +99,7 @@ export const getPeliculaById = async (req, res) => {
                     include: [{
                         model: Usuario,
                         as: 'usuario',
-                        attributes: ['id', 'username', 'foto_perfil']
+                        attributes: ['id', 'username', 'fotoPerfil']
                     }],
                     order: [['createdAt', 'DESC']]
                 }
@@ -152,10 +152,10 @@ export const getPeliculaById = async (req, res) => {
 // Crear una nueva película
 export const createPelicula = async (req, res) => {
     try {
-        const { titulo, descripcion, fecha_lanzamiento, subcategoria, imagen, generos } = req.body;
+        const { titulo, descripcion, fechaSalida, subcategoria, portada, generos } = req.body;
 
         // Validaciones básicas
-        if (!titulo || !descripcion || !fecha_lanzamiento) {
+        if (!titulo || !descripcion || !fechaSalida) {
             return res.status(400).json({
                 success: false,
                 message: 'Título, descripción y fecha de lanzamiento son requeridos'
@@ -174,9 +174,9 @@ export const createPelicula = async (req, res) => {
         const nuevaPelicula = await Pelicula.create({
             titulo,
             descripcion,
-            fecha_lanzamiento,
+            fechaSalida,
             subcategoria: subcategoria || 'General',
-            imagen: imagen || 'https://via.placeholder.com/300x450'
+            portada: portada || 'https://via.placeholder.com/300x450'
         });
 
         // Asociar géneros si se proporcionan
@@ -227,7 +227,7 @@ export const createPelicula = async (req, res) => {
 export const updatePelicula = async (req, res) => {
     try {
         const { id } = req.params;
-        const { titulo, descripcion, fecha_lanzamiento, subcategoria, imagen, generos } = req.body;
+        const { titulo, descripcion, fechaSalida, subcategoria, portada, generos } = req.body;
 
         const pelicula = await Pelicula.findByPk(id);
         if (!pelicula) {
@@ -252,9 +252,9 @@ export const updatePelicula = async (req, res) => {
         const updateData = {};
         if (titulo) updateData.titulo = titulo;
         if (descripcion) updateData.descripcion = descripcion;
-        if (fecha_lanzamiento) updateData.fecha_lanzamiento = fecha_lanzamiento;
+        if (fechaSalida) updateData.fechaSalida = fechaSalida;
         if (subcategoria) updateData.subcategoria = subcategoria;
-        if (imagen) updateData.imagen = imagen;
+        if (portada) updateData.portada = portada;
 
         await pelicula.update(updateData);
 
@@ -351,7 +351,7 @@ export const getPeliculaReviews = async (req, res) => {
             include: [{
                 model: Usuario,
                 as: 'usuario',
-                attributes: ['id', 'username', 'foto_perfil']
+                attributes: ['id', 'username', 'fotoPerfil']
             }],
             limit: parseInt(limit),
             offset: parseInt(offset),

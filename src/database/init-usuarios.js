@@ -7,37 +7,37 @@ export const initUsuarios = async () => {
         const usuarios = [
             {
                 email: 'juan.perez@email.com',
-                usuario: 'juanperez',
+                username: 'juanperez',
                 contrasena: 'password123',
                 fotoPerfil: 'https://via.placeholder.com/150/0000FF/808080?text=JP'
             },
             {
                 email: 'maria.garcia@email.com',
-                usuario: 'mariagarcia',
+                username: 'mariagarcia',
                 contrasena: 'password456',
                 fotoPerfil: 'https://via.placeholder.com/150/FF0000/FFFFFF?text=MG'
             },
             {
                 email: 'carlos.rodriguez@email.com',
-                usuario: 'carlosrod',
+                username: 'carlosrod',
                 contrasena: 'password789',
                 fotoPerfil: 'https://via.placeholder.com/150/00FF00/000000?text=CR'
             },
             {
                 email: 'ana.martinez@email.com',
-                usuario: 'anamartinez',
+                username: 'anamartinez',
                 contrasena: 'password321',
                 fotoPerfil: 'https://via.placeholder.com/150/FFFF00/000000?text=AM'
             },
             {
                 email: 'luis.lopez@email.com',
-                usuario: 'luislopez',
+                username: 'luislopez',
                 contrasena: 'password654',
                 fotoPerfil: 'https://via.placeholder.com/150/FF00FF/FFFFFF?text=LL'
             },
             {
                 email: 'sofia.hernandez@email.com',
-                usuario: 'sofiahernandez',
+                username: 'sofiahernandez',
                 contrasena: 'password987',
                 fotoPerfil: 'https://via.placeholder.com/150/00FFFF/000000?text=SH'
             }
